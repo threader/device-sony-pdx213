@@ -12,8 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/aosp_twrp_xqbt52.mk
+TARGET_KERNEL_CONFIG := aosp_lena_pdx213_defconfig
 
-COMMON_LUNCH_CHOICES += \
-    aosp_twrp_xqbt52-eng \
-    aosp_twrp_xqbt52-userdebug
+# DualSim
+PRODUCT_DEVICE_DS := true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.default_network=9,9
+
+# Inherit from those products. Most specific first.
+$(call inherit-product, device/sony/pdx213_twrp/device.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+PRODUCT_NAME := aosp_twrp_xqbt52
+PRODUCT_DEVICE := pdx213
+PRODUCT_MODEL := Xperia 10 III (AOSP)
+PRODUCT_BRAND := Sony
+PRODUCT_MANUFACTURER := Sony

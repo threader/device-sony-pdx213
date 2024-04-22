@@ -27,7 +27,8 @@ PRODUCT_PLATFORM := lena
 
 # Kernel cmdline
 BOARD_KERNEL_CMDLINE += androidboot.hardware=pdx213
-BOARD_KERNEL_CMDLINE += androidboot.fstab_suffix=pdx213
+BOARD_KERNEL_CMDLINE += androidboot.fstab_suffix=pdx213 \
+    androidboot.selinux=permissive
 
 # Partition information
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
